@@ -1,17 +1,23 @@
 #dotfiles 
-=====
-private memo
-=====
-#homesick
+======
+this is private memo
 
-##install
-```
-gem install homesick
-```
+##homesick
+======
+[homesick](https://github.com/technicalpickles/homesick)
 
-###Setting
-```
-homesick clone git@github.com:atsumo/dotfiles.git
-homesick list
-homesick symlink
-```
+dotfilesの管理にhomesickを使用しています。
+
+インストール方法（ruby）
+
+	gem install homesick
+
+設定
+
+	homesick clone git@github.com:atsumo/dotfiles.git
+	homesick list
+	
+シンボリックリンクをしてくれる
+
+	homesick symlink
+
