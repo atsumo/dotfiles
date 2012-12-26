@@ -2,9 +2,9 @@
 ======
 this is private memo
 
-##homesick
+##[homesick](https://github.com/technicalpickles/homesick)
 ======
-[homesick](https://github.com/technicalpickles/homesick)
+
 
 dotfilesの管理にhomesickを使用しています。
 
