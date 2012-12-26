@@ -46,3 +46,5 @@ if [[ -f ~/nvm/nvm.sh ]]; then
     unset _nodejs_use_version
   fi
 fi
+
+export PATH=/usr/local/bin:$PATH
