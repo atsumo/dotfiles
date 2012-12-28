@@ -22,4 +22,4 @@ dotfilesの管理にhomesickを使用しています。
 	homesick symlink
 
 gitconfig.localを生成して、プライベートなものはそこに突っ込む
-
+(※git 1.7.10 or later)
