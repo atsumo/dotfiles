@@ -1,5 +1,5 @@
 set nocompatible               " be iMproved
-set listchars=eol:$,tab:>\ 
+ 
 "================================================================================
 "" for plugin settings
 "================================================================================
@@ -36,3 +36,38 @@ NeoBundle 'kchmck/vim-coffee-script'
 filetype plugin indent on     " required!
 filetype indent on
 syntax on
+
+" 行表示
+set number
+set listchars=eol:$,tab:>\
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set autoindent
+set cursorline
+
+" バッファ一覧
+noremap tp :Unite buffer<CR>
+" ファイル一覧
+noremap tn :Unite -buffer-name=file file file/new<CR>
+" カレントディレクトリのファイル一覧
+noremap to :UniteWithBufferDir -buffer-name=files file file/new<CR>
+" 最近使ったファイルの一覧
+noremap th :Unite file_mru<CR>
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+" insertモードを抜けるとIMEオフ
+set noimdisable
+set iminsert=0 imsearch=0
+set noimcmdline
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
+" コンマの後に自動的にスペースを挿入
+inoremap , ,<Space>
+
+imap ^[OA <Up>
+imap ^[OB <Down>
+imap ^[OC <Right>
+imap ^[OD <Left>
