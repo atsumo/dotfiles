@@ -25,9 +25,8 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'chaquotay/ftl-vim-syntax'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
-NeoBundle 'taichouchou2/vim-javascript' " jQuery syntax追加
-NeoBundle 'kchmck/vim-coffee-script'
-
+NewBunble 'taichouchou2/vim-javascript'
+NeoBundle 'heavenshell/vim-jsdoc'
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 "" original repos
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -66,8 +65,3 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
-
-imap ^[OA <Up>
-imap ^[OB <Down>
-imap ^[OC <Right>
-imap ^[OD <Left>
