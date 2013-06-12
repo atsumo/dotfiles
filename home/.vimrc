@@ -23,6 +23,9 @@ NeoBundle 'taichouchou2/html5.vim'
 NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'kchmck/vim-coffee-script'
 
 "" original repos
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
@@ -32,8 +35,8 @@ syntax on
 " 行表示
 set number
 set listchars=eol:$,tab:>\
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
 set cursorline
@@ -59,3 +62,4 @@ endif
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibility=1
+let g:vimfiler_as_default_explorer = 1
