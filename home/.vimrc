@@ -27,7 +27,7 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-
+NeoBundle 'andrewle/vim-autoclose'          " 勝手に閉じカッコをつける
 "" original repos
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
@@ -67,6 +67,9 @@ let g:vimfiler_as_default_explorer = 1
 
 " vim indect-guides
 let g:indent_guides_auto_colors = 0
+set ts=4 sw=4 et
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
@@ -84,3 +87,23 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows=0
 let g:NERDTreeMouseMode=2
+
+" 編集モード系
+set virtualedit=all     " カーソルを文字が存在しない部分でも動けるようにする
+set hidden              " バッファを閉じる代わりに隠す（Undo履歴を残すため）
+set switchbuf=useopen   " 新しく開く代わりにすでに開いてあるバッファを開く
+set showmatch           " 対応する括弧などをハイライト表示する
+set matchtime=3         " 対応括弧のハイライト表示を3秒にする
+
+" 対応括弧に'<'と'>'のペアを追加
+set matchpairs& matchpairs+=<:>
+
+" Swapファイル？Backupファイル？前時代的すぎ
+" なので全て無効化する
+set nowritebackup
+set nobackup
+set noswapfile
+
+" TABにて対応ペアにジャンプ
+nnoremap <Tab> %
+vnoremap <Tab> %
