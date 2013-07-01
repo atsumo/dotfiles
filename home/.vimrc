@@ -28,6 +28,11 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'andrewle/vim-autoclose'          " 勝手に閉じカッコをつける
+NeoBundle 'wavded/vim-stylus'
+NeoBundle 'taichouchou2/alpaca_powertabline'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+NeoBundle 'digitaltoad/vim-jade'
+
 "" original repos
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
@@ -37,6 +42,7 @@ syntax on
 set number
 set listchars=eol:$,tab:>\
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
@@ -45,6 +51,13 @@ set cursorline
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
+
+" ==============================
+" mouse optios
+" ==============================
+if has("mouse")
+    set mouse=a
+endif       
 
 let g:neocomplcache_enable_at_startup = 1
 
@@ -89,14 +102,12 @@ let g:NERDTreeDirArrows=0
 let g:NERDTreeMouseMode=2
 
 " 編集モード系
-set virtualedit=all     " カーソルを文字が存在しない部分でも動けるようにする
+""set virtualedit=all     " カーソルを文字が存在しない部分でも動けるようにする
 set hidden              " バッファを閉じる代わりに隠す（Undo履歴を残すため）
 set switchbuf=useopen   " 新しく開く代わりにすでに開いてあるバッファを開く
 set showmatch           " 対応する括弧などをハイライト表示する
 set matchtime=3         " 対応括弧のハイライト表示を3秒にする
 
-" 対応括弧に'<'と'>'のペアを追加
-set matchpairs& matchpairs+=<:>
 
 " Swapファイル？Backupファイル？前時代的すぎ
 " なので全て無効化する
@@ -107,3 +118,8 @@ set noswapfile
 " TABにて対応ペアにジャンプ
 nnoremap <Tab> %
 vnoremap <Tab> %
+
+""powerline true
+set laststatus=2  ""always show the statusline
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
