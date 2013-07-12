@@ -41,9 +41,9 @@ syntax on
 " 行表示
 set number
 set listchars=eol:$,tab:>\
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set autoindent
 set cursorline
