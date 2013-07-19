@@ -121,5 +121,17 @@ vnoremap <Tab> %
 
 ""powerline true
 set laststatus=2  ""always show the statusline
-let g:Powerline_symbols = 'fancy'
+""let g:Powerline_symbols = 'fancy'
 set t_Co=256
+
+"" clipboard
+set clipboard+=unnamedplus,unnamed
+
+"" 補完時のカラー
+hi Pmenu ctermbg=255 ctermfg=0 guifg=#000000 guibg=#999999
+hi PmenuSel ctermbg=blue ctermfg=black
+hi PmenuSbar ctermbg=0 ctermfg=9
+hi PmenuSbar ctermbg=255 ctermfg=0 guifg=#000000 guibg=#FFFFFF
+
+""
+inoremap <silent> <C-j> <ESC>
