@@ -32,6 +32,8 @@ NeoBundle 'wavded/vim-stylus'
 NeoBundle 'taichouchou2/alpaca_powertabline'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-fugitive'
 
 "" original repos
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
