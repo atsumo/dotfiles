@@ -27,13 +27,14 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'andrewle/vim-autoclose'          " 勝手に閉じカッコをつける
+NeoBundle 'andrewle/vim-autoclose'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'taichouchou2/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'gregsexton/gitv'
 
 "" original repos
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
@@ -42,11 +43,12 @@ syntax on
 
 " 行表示
 set number
-set listchars=eol:$,tab:>\
+set list
+set listchars=tab:>\ ,trail:_,nbsp:%,extends:>,precedes:<
 set tabstop=4
-set softtabstop=4
+set softtabstop=0
 set shiftwidth=4
-set expandtab
+set noexpandtab
 set autoindent
 set cursorline
 
@@ -54,11 +56,12 @@ set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 
-" ==============================
+" highlight
+set hlsearch
+
 " mouse optios
-" ==============================
 if has("mouse")
-    set mouse=a
+	set mouse=a
 endif       
 
 let g:neocomplcache_enable_at_startup = 1
@@ -82,7 +85,7 @@ let g:vimfiler_as_default_explorer = 1
 
 " vim indect-guides
 let g:indent_guides_auto_colors = 0
-set ts=4 sw=4 et
+" set ts=4 sw=4 et
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
@@ -117,14 +120,11 @@ set nowritebackup
 set nobackup
 set noswapfile
 
-" TABにて対応ペアにジャンプ
-nnoremap <Tab> %
-vnoremap <Tab> %
 
-""powerline true
-set laststatus=2  ""always show the statusline
-""let g:Powerline_symbols = 'fancy'
-set t_Co=256
+"powerline true
+"set laststatus=2  ""always show the statusline
+"let g:Powerline_symbols = 'fancy'
+"set t_Co=256
 
 "" clipboard
 set clipboard+=unnamedplus,unnamed
@@ -137,3 +137,13 @@ hi PmenuSbar ctermbg=255 ctermfg=0 guifg=#000000 guibg=#FFFFFF
 
 ""
 inoremap <silent> <C-j> <ESC>
+
+"jshint
+let g:syntastic_check_on_save=1 "保存時にはチェック
+let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
+let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
+let g:syntastic_javascript_checkers = ['jshint'] "jshintを使う
+let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
+
+" ,scで構文チェック
+nnoremap ,sc :<C-u>SyntasticCheck<CR>"
