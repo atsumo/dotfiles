@@ -12,7 +12,7 @@ ZSH_THEME="mh"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -31,6 +31,7 @@ ZSH_THEME="mh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git brew npm homesick)
 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -48,3 +49,5 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
 fi
 
 export PATH=/usr/local/bin:$PATH
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 

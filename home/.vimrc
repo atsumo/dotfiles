@@ -35,6 +35,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'gregsexton/gitv'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 "" original repos
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
@@ -48,13 +49,17 @@ set listchars=tab:>\ ,trail:_,nbsp:%,extends:>,precedes:<
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
-set noexpandtab
+"set noexpandtab
+set expandtab
 set autoindent
 set cursorline
-
+set backspace=2
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
+
+""連続ペースト
+vnoremap <silent> <C-p> "0p<CR>
 
 " highlight
 set hlsearch
