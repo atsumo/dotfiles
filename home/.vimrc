@@ -1,10 +1,20 @@
-set nocompatible               " be iMproved
- 
-"" for plugin settings
-"" neobundle
+set nocompatible               " Be iMproved
+filetype off                   " Required!
+
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+filetype plugin indent on     " Required!
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  "finish
 endif
 
 "" original repos on github
@@ -20,9 +30,9 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'chaquotay/ftl-vim-syntax'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
-NeoBundle 'taichouchou2/vim-javascript'
+"NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'heavenshell/vim-jsdoc'
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kchmck/vim-coffee-script'
@@ -149,6 +159,10 @@ let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーシ�
 let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
 let g:syntastic_javascript_checkers = ['jshint'] "jshintを使う
 let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
+" Emmet
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode."
 
 " ,scで構文チェック
 nnoremap ,sc :<C-u>SyntasticCheck<CR>"
