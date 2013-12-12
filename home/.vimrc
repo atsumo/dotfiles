@@ -167,11 +167,68 @@ set clipboard+=unnamedplus,unnamed
 inoremap <silent> <C-j> <ESC>
 
 " ====================
+" unite
+" ====================
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  nmap <silent><buffer> <ESC><ESC> q
+  imap <silent><buffer> <ESC><ESC> <ESC>q
+endfunction
+
+imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+nmap <silent><buffer> <ESC><ESC> q
+imap <silent><buffer> <ESC><ESC> <ESC>q
+nnoremap [unite] <Nop>
+nmap <Leader>u [unite]
+
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]d :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file_mru<CR>
+nnoremap <silent> [unite]u :<C-u>Unite file_mru<CR>
+" nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
+" nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
+
+" unite yank history
+let g:unite_source_history_yank_enable = 1
+nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+
+" let g:unite_enable_start_insert = 1
+let g:unite_source_file_mru_limit = 100
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opts = ''
+let g:unite_source_grep_max_candidates = 200
+
+vnoremap /g y:Unite grep::-iRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+
+" ====================
 " VimFiler
 " ====================
-nnoremap <silent> [unite]e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
+nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=45 -toggle -no-quit<Cr>
+autocmd! FileType vimfiler call g:my_vimfiler_settings()
+function! g:my_vimfiler_settings()
+  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<Cr>
+  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<Cr>
+endfunction
+
+let s:my_action = { 'is_selectable' : 1 }
+function! s:my_action.func(candidates)
+  wincmd p
+  exec 'split '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_split', s:my_action)
+
+let s:my_action = { 'is_selectable' : 1 }
+function! s:my_action.func(candidates)
+  wincmd p
+  exec 'vsplit '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_vsplit', s:my_action)
+"nnoremap <silent> [unite]e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+"let g:vimfiler_as_default_explorer = 1
+"let g:vimfiler_safe_mode_by_default = 0
 
 " ====================
 " Tagbar
