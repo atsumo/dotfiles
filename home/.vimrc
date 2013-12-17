@@ -101,8 +101,14 @@ endif
 
 let g:neocomplcache_enable_at_startup = 1
 
-imap <c-k>     <plug>(neosnippet_expand_or_jump)
-smap <c-k>     <plug>(neosnippet_expand_or_jump)
+" ====================
+" neo-snippets
+" ====================
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
 
 " supertab like snippets behavior.
 "imap <expr><tab> neosnippet#expandable() <bar><bar> neosnippet#jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<c-n>" : "\<tab>"
