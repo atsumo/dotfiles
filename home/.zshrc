@@ -33,6 +33,7 @@ plugins=(git brew npm homesick)
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source $ZSH/oh-my-zsh.sh
+#source ~/.bin/tmuxinator.zsh
 
 # Customize to your needs...
 if [[ -f ~/.nvm/nvm.sh ]]; then
@@ -51,3 +52,4 @@ fi
 export PATH=/usr/local/bin:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+export EDITOR=vim
