@@ -59,7 +59,8 @@ NeoBundle 'marijnh/tern_for_vim'
 
 " color schemes
 NeoBundle 'goatslacker/mango.vim'
-
+" nerdtree
+NeoBundle 'scrooloose/nerdtree.git'
 
 " 行表示
 set number
@@ -135,19 +136,18 @@ autocmd vimenter,colorscheme * :hi indentguidesodd  guibg=red   ctermbg=3
 autocmd vimenter,colorscheme * :hi indentguideseven guibg=green ctermbg=4
 
 " nerd tree
-"neoBundle 'scrooloose/nerdtree.git'
-"nmap <silent> <C-e>      :NERDTreeToggle<CR>
-"vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-"omap <silent> <C-e>      :NERDTreeToggle<CR>
-"imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-"cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-"autocmd vimenter * if !argc() | NERDTree | endif
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
-"let g:NERDTreeShowHidden=1
-"let g:NERDTreeMinimalUI=1
-"let g:NERDTreeDirArrows=0
-"let g:NERDTreeMouseMode=2
+nmap <silent> <C-e>      :NERDTreeToggle<CR>
+vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+omap <silent> <C-e>      :NERDTreeToggle<CR>
+imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowHidden=1
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeDirArrows=0
+let g:NERDTreeMouseMode=2
 
 " 編集モード系
 ""set virtualedit=all     " カーソルを文字が存在しない部分でも動けるようにする
@@ -166,7 +166,8 @@ set noswapfile
 
 
 "" clipboard
-set clipboard+=unnamedplus,unnamed
+set clipboard+=unnamed
+set clipboard+=autoselect
 
 
 ""
@@ -211,30 +212,9 @@ vnoremap /g y:Unite grep::-iRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
 " ====================
 " VimFiler
 " ====================
-nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=45 -toggle -no-quit<Cr>
-autocmd! FileType vimfiler call g:my_vimfiler_settings()
-function! g:my_vimfiler_settings()
-  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<Cr>
-  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<Cr>
-endfunction
-
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
-  wincmd p
-  exec 'split '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_split', s:my_action)
-
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
-  wincmd p
-  exec 'vsplit '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_vsplit', s:my_action)
-"nnoremap <silent> [unite]e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
-"let g:vimfiler_as_default_explorer = 1
-"let g:vimfiler_safe_mode_by_default = 0
+nnoremap <silent> [unite]e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
 
 " ====================
 " Tagbar
@@ -250,7 +230,7 @@ let g:syntastic_check_on_save=1 "保存時にはチェック
 let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
 let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
 let g:syntastic_javascript_checkers = ['jshint'] "jshintを使う
-let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
+"let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
 " Emmet
 let g:user_emmet_mode='n'    "only enable normal mode functions.
 let g:user_emmet_mode='inv'  "enable all functions, which is equal to
@@ -261,3 +241,9 @@ nnoremap ,sc :<C-u>SyntasticCheck<CR>"
 
 " tern
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+" insert
+inoremap <silent> jj <ESC>
+inoremap <silent> <C-j> j
+inoremap <silent> kk <ESC>
+inoremap <silent> <C-k> k
