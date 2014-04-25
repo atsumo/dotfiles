@@ -240,7 +240,7 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 nnoremap ,sc :<C-u>SyntasticCheck<CR>"
 
 " tern
-autocmd FileType javascript setlocal omnifunc=tern#Complete
+"autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 " insert
 inoremap <silent> jj <ESC>
