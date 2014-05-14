@@ -55,5 +55,6 @@ cask install vagrant       || true
 cask install slate         || true
 cask install Cyberduck     || true
 
+cask alfred link # brew-caskのappをalfredで探せるようにする
 # Remove outdated versions
 cleanup
