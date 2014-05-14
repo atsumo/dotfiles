@@ -54,7 +54,7 @@ cask install sublime-text  || true
 cask install virtualbox    || true
 cask install vagrant       || true
 cask install slate         || true
-cask install Cyberduck     || true
+cask install cyberduck     || true
 cask install adobe-creative-cloud || true
 cask install clipmenu      || true
 
