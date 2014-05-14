@@ -27,7 +27,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
+"NeoBundle 'Shougo/neosnippet'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'chaquotay/ftl-vim-syntax'
@@ -55,7 +55,7 @@ NeoBundle 'majutsushi/tagbar'
 " open browser
 NeoBundle 'tyru/open-browser.vim'
 " tern for vim
-NeoBundle 'marijnh/tern_for_vim'
+""NeoBundle 'marijnh/tern_for_vim'
 
 " color schemes
 NeoBundle 'goatslacker/mango.vim'
