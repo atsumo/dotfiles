@@ -42,6 +42,7 @@ install imagemagick || true
 # Casks
 install brew-cask
 cask install google-chrome || true
+cask install google-japanese-ime || true
 cask install iterm2        || true
 cask install dropbox       || true
 cask install hipchat       || true
@@ -54,7 +55,7 @@ cask install virtualbox    || true
 cask install vagrant       || true
 cask install slate         || true
 cask install Cyberduck     || true
-
+case install adobe-creative-cloud || true
 cask alfred link # brew-caskのappをalfredで探せるようにする
 # Remove outdated versions
 cleanup
