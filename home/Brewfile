@@ -55,7 +55,10 @@ cask install virtualbox    || true
 cask install vagrant       || true
 cask install slate         || true
 cask install Cyberduck     || true
-case install adobe-creative-cloud || true
+cask install adobe-creative-cloud || true
+cask install clipmenu      || true
+
+# link
 cask alfred link # brew-caskのappをalfredで探せるようにする
 # Remove outdated versions
 cleanup
