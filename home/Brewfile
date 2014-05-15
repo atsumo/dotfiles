@@ -57,6 +57,8 @@ cask install slate         || true
 cask install cyberduck     || true
 cask install adobe-creative-cloud || true
 cask install clipmenu      || true
+cask install totalspaces || true
+cask install totalfinder || true
 
 # link
 cask alfred link # brew-caskのappをalfredで探せるようにする
