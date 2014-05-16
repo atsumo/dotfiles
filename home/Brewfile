@@ -60,6 +60,17 @@ cask install clipmenu      || true
 cask install totalspaces || true
 cask install totalfinder || true
 
+#quicklook plugin
+cask install qlcolorcode  || true
+cask install qlstephen    || true
+cask install qlmarkdown   || true
+cask install quicklook-json   || true
+cask install qlprettypatch  || true
+cask install quicklook-csv  || true
+cask install betterzipql    || true
+cask install webp-quicklook || true
+cask install suspicious-package || true
+
 # link
 cask alfred link # brew-caskのappをalfredで探せるようにする
 # Remove outdated versions
