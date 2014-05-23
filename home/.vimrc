@@ -59,6 +59,17 @@ NeoBundle 'tyru/open-browser.vim'
 
 " color schemes
 NeoBundle 'goatslacker/mango.vim'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
+
 " nerdtree
 NeoBundle 'scrooloose/nerdtree.git'
 
@@ -83,12 +94,15 @@ set noimcmdline
 " ====================
 syntax enable
 set t_co=256
-set background=dark
-colorscheme mango
+""set background=dark
+""colorscheme molokai
+""colorscheme railscasts
 
 " highlight
-highlight cursorline ctermbg=237
+""highlight cursorline ctermbg=237
 highlight pmenu ctermbg=179 ctermfg=16 cterm=bold
+
+
 " 連続ペースト
 vnoremap <silent> <c-p> "0p<cr>
 
@@ -229,11 +243,11 @@ nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
 let g:syntastic_jslint_checkers=['jslint']
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
-""let g:syntastic_check_on_save=1 "保存時にはチェック
-""let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
-""let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
-""let g:syntastic_javascript_checkers = ['jshint'] "jshintを使う
-"let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
+let g:syntastic_check_on_save=1 "保存時にはチェック
+let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
+let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
+let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
+
 " Emmet
 let g:user_emmet_mode='n'    "only enable normal mode functions.
 let g:user_emmet_mode='inv'  "enable all functions, which is equal to

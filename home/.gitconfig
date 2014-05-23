@@ -13,8 +13,8 @@
 	d = diff
 	dc = diff --cached
 [user]
-	name = 
-	email = 
+	name = atsumo
+	email = bachisuta@gmail.com
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
