@@ -49,6 +49,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'bling/vim-airline'
 
 " tagbar
 NeoBundle 'majutsushi/tagbar'
@@ -75,6 +77,7 @@ NeoBundle 'scrooloose/nerdtree.git'
 
 " 行表示
 set number
+"set ruler
 set list
 set listchars=tab:>\ ,trail:_,nbsp:%,extends:>,precedes:<
 set tabstop=2
@@ -92,16 +95,16 @@ set noimcmdline
 " ====================
 " color scheme
 " ====================
-syntax enable
+syntax on 
 set t_co=256
-""set background=dark
-""colorscheme molokai
-""colorscheme railscasts
+" set background=dark
+colorscheme molokai
+"colorscheme railscasts
 
 " highlight
-""highlight cursorline ctermbg=237
-highlight pmenu ctermbg=179 ctermfg=16 cterm=bold
-
+" highlight cursorline ctermbg=237
+" highlight pmenu ctermbg=179 ctermfg=16 cterm=bold
+let g:molokai_original = 1
 
 " 連続ペースト
 vnoremap <silent> <c-p> "0p<cr>
@@ -169,6 +172,12 @@ set hidden              " バッファを閉じる代わりに隠す（Undo履�
 set switchbuf=useopen   " 新しく開く代わりにすでに開いてあるバッファを開く
 set showmatch           " 対応する括弧などをハイライト表示する
 set matchtime=3         " 対応括弧のハイライト表示を3秒にする
+"j, k による移動を折り返されたテキストでも自然に振る舞うように変更
+nnoremap j gj
+nnoremap k gk
+"表示行単位で行移動する
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 
 
 " Swapファイル？Backupファイル？前時代的すぎ
@@ -193,7 +202,7 @@ inoremap <silent> <C-j> <ESC>
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  nmap <silent><buffer> <ESC><ESC> q
+  nmap <silent><buffer> <ESC><ESC>
   imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
 

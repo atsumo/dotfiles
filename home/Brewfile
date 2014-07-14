@@ -9,6 +9,8 @@ tap homebrew/versions    || true
 tap phinze/homebrew-cask || true
 tap homebrew/binary      || true
 tap thoughtbot/formulae  || true
+tap caskroom/versions    || true
+tap peco/peco            || true
 
 # パッケージのインストール
 install subversion || true
@@ -35,6 +37,7 @@ install tmux      || true
 install markdown  || true
 install nkf       || true
 install ag        || true
+install peco      || true
 
 ## Image
 install imagemagick || true
@@ -50,7 +53,8 @@ cask install alfred        || true
 cask install sourcetree    || true
 cask install evernote      || true
 cask install kobito        || true
-cask install sublime-text  || true
+cask install sublime-text3  || true
+cask install keepassx      || true
 cask install virtualbox    || true
 cask install vagrant       || true
 cask install slate         || true
@@ -58,7 +62,7 @@ cask install cyberduck     || true
 cask install adobe-creative-cloud || true
 cask install clipmenu      || true
 cask install totalspaces || true
-cask install totalfinder || true
+# cask install totalfinder || true
 
 #quicklook plugin
 cask install qlcolorcode  || true
