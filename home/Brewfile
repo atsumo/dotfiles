@@ -36,7 +36,8 @@ install readline  || true
 install tmux      || true
 install markdown  || true
 install nkf       || true
-install ag        || true
+install the_silver_searcher || true # use ag
+#install ag        || true
 install peco      || true
 
 ## Image
