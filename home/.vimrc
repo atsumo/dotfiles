@@ -51,7 +51,7 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
-
+NeoBundle 'rking/ag.vim'
 " tagbar
 NeoBundle 'majutsushi/tagbar'
 " open browser
@@ -153,18 +153,56 @@ autocmd vimenter,colorscheme * :hi indentguidesodd  guibg=red   ctermbg=3
 autocmd vimenter,colorscheme * :hi indentguideseven guibg=green ctermbg=4
 
 " nerd tree
-nmap <silent> <C-e>      :NERDTreeToggle<CR>
-vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-omap <silent> <C-e>      :NERDTreeToggle<CR>
-imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowHidden=1
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeDirArrows=0
-let g:NERDTreeMouseMode=2
+"====================
+" START NerdTree 設定
+"====================
+" 引数なしで実行したとき、NERDTreeを実行する
+let file_name = expand("%:p")
+if has('vim_starting') &&  file_name == ""
+    autocmd VimEnter * call ExecuteNERDTree()
+endif
+ 
+" カーソルが外れているときは自動的にnerdtreeを隠す
+function! ExecuteNERDTree()
+    "b:nerdstatus = 1 : NERDTree 表示中
+    "b:nerdstatus = 2 : NERDTree 非表示中
+ 
+    if !exists('g:nerdstatus')
+        execute 'NERDTree ./'
+        let g:windowWidth = winwidth(winnr())
+        let g:nerdtreebuf = bufnr('')
+        let g:nerdstatus = 1 
+ 
+    elseif g:nerdstatus == 1 
+        execute 'wincmd t'
+        execute 'vertical resize' 0 
+        execute 'wincmd p'
+        let g:nerdstatus = 2 
+    elseif g:nerdstatus == 2 
+        execute 'wincmd t'
+        execute 'vertical resize' g:windowWidth
+        let g:nerdstatus = 1 
+ 
+    endif
+endfunction
+noremap <c-e> :<c-u>:call ExecuteNERDTree()<cr>
+"====================
+" END NerdTree 設定
+"====================
+
+
+""nmap <silent> <C-e>      :NERDTreeToggle<CR>
+""vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+""omap <silent> <C-e>      :NERDTreeToggle<CR>
+""imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+""cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+""autocmd vimenter * if !argc() | NERDTree | endif
+""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+""let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
+""let g:NERDTreeShowHidden=0
+""let g:NERDTreeMinimalUI=1
+""let g:NERDTreeDirArrows=0
+""let g:NERDTreeMouseMode=2
 
 " 編集モード系
 ""set virtualedit=all     " カーソルを文字が存在しない部分でも動けるようにする
@@ -223,14 +261,17 @@ nnoremap <silent> [unite]u :<C-u>Unite file_mru<CR>
 let g:unite_source_history_yank_enable = 1
 nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
 
-" let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_limit = 100
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-let g:unite_source_grep_recursive_opts = ''
-let g:unite_source_grep_max_candidates = 200
 
-vnoremap /g y:Unite grep::-iRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 
 " ====================
 " VimFiler
