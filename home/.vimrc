@@ -23,17 +23,13 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
-"NeoBundle 'vimclojure'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
-"NeoBundle 'Shougo/neosnippet'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
-"NeoBundle 'chaquotay/ftl-vim-syntax'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
-"NeoBundle 'taichouchou2/vim-javascript'
 NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/vimfiler.vim'
@@ -57,7 +53,6 @@ NeoBundle 'majutsushi/tagbar'
 " open browser
 NeoBundle 'tyru/open-browser.vim'
 " tern for vim
-""NeoBundle 'marijnh/tern_for_vim'
 
 " color schemes
 NeoBundle 'goatslacker/mango.vim'

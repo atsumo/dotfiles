@@ -74,7 +74,7 @@ cask install quicklook-csv  || true
 cask install betterzipql    || true
 cask install webp-quicklook || true
 cask install suspicious-package || true
-
+cask install macdown  || true
 # link
 cask alfred link # brew-caskのappをalfredで探せるようにする
 # Remove outdated versions
