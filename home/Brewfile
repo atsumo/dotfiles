@@ -57,12 +57,10 @@ cask install sublime-text3  || true
 cask install keepassx      || true
 cask install virtualbox    || true
 cask install vagrant       || true
-cask install slate         || true
 cask install cyberduck     || true
 cask install adobe-creative-cloud || true
 cask install clipmenu      || true
 cask install totalspaces || true
-# cask install totalfinder || true
 
 #quicklook plugin
 cask install qlcolorcode  || true

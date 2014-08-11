@@ -58,3 +58,7 @@ export EDITOR=vim
 function agvim () {
   vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
 }
+
+#GOPATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
