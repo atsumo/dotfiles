@@ -60,5 +60,7 @@ function agvim () {
 }
 
 #GOPATH
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+if [ -z "${GOPATH:-}" ]; then
+  export GOPATH=$HOME/go
+  PATH=$PATH:$GOPATH/bin
+fi
