@@ -62,5 +62,6 @@ function agvim () {
 #GOPATH
 if [ -z "${GOPATH:-}" ]; then
   export GOPATH=$HOME/go
-  PATH=$PATH:$GOPATH/bin
+  export GOROOT=/usr/local/opt/go/libexec
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi

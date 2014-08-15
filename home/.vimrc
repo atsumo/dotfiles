@@ -70,6 +70,12 @@ NeoBundle 'vim-scripts/rdark'
 " nerdtree
 NeoBundle 'scrooloose/nerdtree.git'
 
+" Go
+NeoBundle 'fatih/vim-go'
+
+"
+"set rtp+=$GOROOT/misc/vim
+
 " 行表示
 set number
 "set ruler
