@@ -1,5 +1,6 @@
 autocmd!
 
+set encoding=utf-8
 set nocompatible               " be improved
 filetype off                   " required!
 
