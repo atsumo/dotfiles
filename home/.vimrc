@@ -1,6 +1,5 @@
 autocmd!
 
-set encoding=utf-8
 set nocompatible               " be improved
 filetype off                   " required!
 
@@ -76,6 +75,9 @@ NeoBundle 'fatih/vim-go'
 
 "
 "set rtp+=$GOROOT/misc/vim
+
+set encoding=utf-8
+set autoread
 
 " 行表示
 set number
