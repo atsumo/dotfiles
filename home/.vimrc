@@ -1,26 +1,33 @@
-autocmd!
-
-set nocompatible               " be improved
-filetype off                   " required!
-
+"*****************************************************************************
+"" NeoBundle core
+"*****************************************************************************
 if has('vim_starting')
+  set nocompatible               " Be iMproved
+
+  " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+let vundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
 
-filetype plugin indent on     " required!
-
-" installation check.
-if neobundle#exists_not_installed_bundles()
-  echomsg 'not installed bundles : ' .
-        \ string(neobundle#get_not_installed_bundle_names())
-  echomsg 'please execute ":neobundleinstall" command.'
-  "finish
+if !filereadable(vundle_readme)
+  echo "Installing NeoBundle..."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim/
 endif
 
-"" original repos on github
-NeoBundle 'Shougo/neobundle.vim'
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+
+" ========================================
+" NeoBundle install packages
+" ========================================
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
@@ -48,11 +55,11 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'rking/ag.vim'
+
 " tagbar
 NeoBundle 'majutsushi/tagbar'
 " open browser
 NeoBundle 'tyru/open-browser.vim'
-" tern for vim
 
 " color schemes
 NeoBundle 'goatslacker/mango.vim'
@@ -73,32 +80,50 @@ NeoBundle 'scrooloose/nerdtree.git'
 " Go
 NeoBundle 'fatih/vim-go'
 
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
 "
 "set rtp+=$GOROOT/misc/vim
 
+" ========================================
+" Basic Setup
+" ========================================
+"" Encoding
 set encoding=utf-8
-set autoread
+set fileencoding=utf-8
+set fileencodings=utf-8
 
 " 行表示
 set number
 "set ruler
 set list
 set listchars=tab:>\ ,trail:_,nbsp:%,extends:>,precedes:<
+
+"" Tabs. May be overriten by autocmd rules
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set noexpandtab
 set expandtab
 set autoindent
+
+
 set cursorline
 set backspace=indent,eol,start
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 
-" ====================
+" ========================================
 " color scheme
-" ====================
+" ========================================
 syntax on 
 set t_co=256
 " set background=dark
@@ -123,9 +148,9 @@ endif
 
 let g:neocomplcache_enable_at_startup = 1
 
-" ====================
+" ========================================
 " neo-snippets
-" ====================
+" ========================================
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -222,12 +247,23 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 
 
-" Swapファイル？Backupファイル？前時代的すぎ
-" なので全て無効化する
+"" Directories for swp files
 set nowritebackup
 set nobackup
 set noswapfile
 
+"*****************************************************************************
+"" Abbreviations
+"*****************************************************************************
+"" no one is really happy until you have this shortcuts
+cab W! w!
+cab Q! q!
+cab Wq wq
+cab Wa wa
+cab wQ wq
+cab WQ wq
+cab W w
+cab Q q
 
 
 "" clipboard
