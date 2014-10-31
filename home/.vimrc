@@ -39,7 +39,6 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
 NeoBundle 'heavenshell/vim-jsdoc'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -52,10 +51,10 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'kien/ctrlp.vim'
+""NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'rking/ag.vim'
-
+NeoBundle 'terryma/vim-multiple-cursors'
 " tagbar
 NeoBundle 'majutsushi/tagbar'
 " open browser
@@ -128,6 +127,7 @@ syntax on
 set t_co=256
 " set background=dark
 colorscheme molokai
+hi Comment ctermfg=2
 "colorscheme railscasts
 
 " highlight
@@ -355,3 +355,12 @@ inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
 inoremap <silent> <C-k> k
+
+" multiple-cursors
+let g:multi_cursor_use_default_mapping=0
+
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_start_key='<F6>'
