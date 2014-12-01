@@ -55,9 +55,9 @@ cask install evernote      || true
 cask install kobito        || true
 cask install sublime-text3  || true
 cask install keepassx      || true
-#cask install virtualbox    || true
-#cask install vagrant       || true
-cask install kitematic      || true
+cask install virtualbox    || true
+cask install vagrant       || true
+#cask install kitematic      || true
 cask install cyberduck     || true
 cask install adobe-creative-cloud || true
 cask install clipmenu      || true

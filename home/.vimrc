@@ -1,6 +1,6 @@
-"*****************************************************************************
+" *****************************************************************************
 "" NeoBundle core
-"*****************************************************************************
+" *****************************************************************************
 if has('vim_starting')
   set nocompatible               " Be iMproved
 
@@ -155,8 +155,27 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
+" ========================================
 " for golang
+" ========================================
 let g:go_snippet_engine = "neosnippet"
+
+" Go に付属の plugin と gocode を有効にする
+if $GOROOT != ''
+  set rtp^=${GOROOT}/misc/vim
+  set rtp^=${GOPATH}/src/github.com/nsf/gocode/vim
+syntax on
+endif
+
+" :Fmt などで gofmt の代わりに goimports を使う
+let g:gofmt_command = 'goimports'
+
+
+" 保存時に自動的に :Fmt （コード整形）実行
+au BufWritePre *.go Fmt
+au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=2
+au FileType go compiler go
+
 
 " supertab like snippets behavior.
 "imap <expr><tab> neosnippet#expandable() <bar><bar> neosnippet#jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<c-n>" : "\<tab>"

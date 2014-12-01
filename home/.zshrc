@@ -40,7 +40,7 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
   source ~/.nvm/nvm.sh
 
   if which nvm >/dev/null 2>&1 ;then
-    _nodejs_use_version="v0.10.26"
+    _nodejs_use_version="v0.11.14"
     if nvm ls | grep -F -e "${_nodejs_use_version}" >/dev/null 2>&1 ;then
       nvm use "${_nodejs_use_version}" >/dev/null
       export NODE_PATH=${NVM_PATH}_modules${NODE_PATH:+:}${NODE_PATH}
@@ -61,7 +61,19 @@ function agvim () {
 
 #GOPATH
 if [ -z "${GOPATH:-}" ]; then
-  export GOPATH=$HOME/.go
+  export GOPATH=$HOME
   export GOROOT=/usr/local/opt/go/libexec
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
+
+#ghq + peco
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
