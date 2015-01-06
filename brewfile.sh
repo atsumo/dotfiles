@@ -54,6 +54,7 @@ brew cask install sublime-text3
 brew cask install keepassx
 brew cask install virtualbox
 brew cask install vagrant
+brew cask install hyperswitch
 #brew cask install kitematic
 brew cask install cyberduck
 brew cask install adobe-creative-cloud
