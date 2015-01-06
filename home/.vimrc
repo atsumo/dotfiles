@@ -127,7 +127,7 @@ syntax on
 set t_co=256
 " set background=dark
 colorscheme molokai
-hi Comment ctermfg=2
+"hi Comment ctermfg=2
 "colorscheme railscasts
 
 " highlight
@@ -350,13 +350,13 @@ let g:unite_source_history_yank_enable = 1
 nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
 
 "jshint
-let g:syntastic_jslint_checkers=['jslint']
+let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_check_on_save=1 "保存時にはチェック
 let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
 let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
-let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
+"let g:syntastic_javascript_jshint_conf = '~/.jshintrc'
 
 " Emmet
 let g:user_emmet_mode='n'    "only enable normal mode functions.
