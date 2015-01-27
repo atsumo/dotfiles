@@ -157,14 +157,30 @@ let g:neocomplcache_enable_at_startup = 1
 " ========================================
 " neo-snippets
 " ========================================
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " tabで補完候補の選択を行う
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets, ~/.snippets'
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets, ~/.snippets'
+" tell neosnippet about the other snippets
+let g:neosnippet#enable_snipmate_compatibility=1
+" スニペットの補完が出てる時のキー操作(tabで適用/C-nで次へ)
+imap <expr><Enter> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<Enter>"
+smap <expr><ENTER> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<Enter>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 " ========================================
 " for golang
 " ========================================
@@ -185,22 +201,6 @@ let g:gofmt_command = 'goimports'
 au BufWritePre *.go Fmt
 au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=2
 au FileType go compiler go
-
-
-" supertab like snippets behavior.
-"imap <expr><tab> neosnippet#expandable() <bar><bar> neosnippet#jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<c-n>" : "\<tab>"
-"smap <expr><tab> neosnippet#expandable() <bar><bar> neosnippet#jumpable() ? "\<plug>(neosnippet_expand_or_jump)" : "\<tab>"
-" same :unite snippet
-"imap <c-s>  <plug>(neocomplcache_start_unite_snippet)
-
-" for snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-" tell neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
-let g:neosnippet#enable_snipmate_compatibility=1
 
 " vim indect-guides
 let g:indent_guides_auto_colors = 0
@@ -390,7 +390,8 @@ nnoremap ,sc :<C-u>SyntasticCheck<CR>"
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-j> j
 inoremap <silent> kk <ESC>
-inoremap <silent> <C-k> k
+"inoremap <silent> <C-k> k
+
 
 " multiple-cursors
 let g:multi_cursor_use_default_mapping=0
