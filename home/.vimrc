@@ -72,9 +72,15 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
-
+NeoBundle 'rizzatti/dash.vim'
 " nerdtree
-NeoBundle 'scrooloose/nerdtree.git'
+""NeoBundle 'scrooloose/nerdtree.git'
+
+" snippet
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'honza/vim-snippets'
 
 " Go
 NeoBundle 'fatih/vim-go'
@@ -158,7 +164,7 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 " tabで補完候補の選択を行う
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets, ~/.snippets'
 " ========================================
 " for golang
 " ========================================
@@ -195,7 +201,6 @@ endif
 " tell neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibility=1
-let g:vimfiler_as_default_explorer = 1
 
 " vim indect-guides
 let g:indent_guides_auto_colors = 0
@@ -210,35 +215,35 @@ autocmd vimenter,colorscheme * :hi indentguideseven guibg=green ctermbg=4
 " START NerdTree 設定
 "====================
 " 引数なしで実行したとき、NERDTreeを実行する
-let file_name = expand("%:p")
-if has('vim_starting') &&  file_name == ""
-    autocmd VimEnter * call ExecuteNERDTree()
-endif
+""let file_name = expand("%:p")
+""if has('vim_starting') &&  file_name == ""
+""    autocmd VimEnter * call ExecuteNERDTree()
+""endif
  
 " カーソルが外れているときは自動的にnerdtreeを隠す
-function! ExecuteNERDTree()
-    "b:nerdstatus = 1 : NERDTree 表示中
-    "b:nerdstatus = 2 : NERDTree 非表示中
- 
-    if !exists('g:nerdstatus')
-        execute 'NERDTree ./'
-        let g:windowWidth = winwidth(winnr())
-        let g:nerdtreebuf = bufnr('')
-        let g:nerdstatus = 1 
- 
-    elseif g:nerdstatus == 1 
-        execute 'wincmd t'
-        execute 'vertical resize' 0 
-        execute 'wincmd p'
-        let g:nerdstatus = 2 
-    elseif g:nerdstatus == 2 
-        execute 'wincmd t'
-        execute 'vertical resize' g:windowWidth
-        let g:nerdstatus = 1 
- 
-    endif
-endfunction
-noremap <c-e> :<c-u>:call ExecuteNERDTree()<cr>
+""function! ExecuteNERDTree()
+""    "b:nerdstatus = 1 : NERDTree 表示中
+""    "b:nerdstatus = 2 : NERDTree 非表示中
+"" 
+""    if !exists('g:nerdstatus')
+""        execute 'NERDTree ./'
+""        let g:windowWidth = winwidth(winnr())
+""        let g:nerdtreebuf = bufnr('')
+""        let g:nerdstatus = 1 
+"" 
+""    elseif g:nerdstatus == 1 
+""        execute 'wincmd t'
+""        execute 'vertical resize' 0 
+""        execute 'wincmd p'
+""        let g:nerdstatus = 2 
+""    elseif g:nerdstatus == 2 
+""        execute 'wincmd t'
+""        execute 'vertical resize' g:windowWidth
+""        let g:nerdstatus = 1 
+"" 
+""    endif
+""endfunction
+"noremap <c-e> :<c-u>:call ExecuteNERDTree()<cr>
 "====================
 " END NerdTree 設定
 "====================
@@ -340,9 +345,17 @@ endif
 " ====================
 " VimFiler
 " ====================
-nnoremap <silent> [unite]e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+"nnoremap <silent> [unite]e :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+nnoremap <leader>e :VimFilerExplore -split -winwidth=30 -find -no-quit<Cr>
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
+" vimfilerでeを押すとtabで開く
+" let g:vimfiler_edit_action = 'tabopen'
+" 起動時にVimFileerを起動
+let file_name = expand("%:p")
+if has('vim_starting') && file_name == ""
+  autocmd vimenter * VimFiler -simple
+endif
 
 " ====================
 " Tagbar
