@@ -1,6 +1,11 @@
 snippet context_call
-  context.call(function(${1:args}) {
-    ${2}
+  context.call(${1:fun}, {
+    ${2:param}
+  }, ${3:callback});
+
+snippet context_async
+  context.async(${1:fun}, {
+    ${2:param}
   });
 
 snippet context_callback

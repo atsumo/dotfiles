@@ -85,6 +85,9 @@ NeoBundle 'honza/vim-snippets'
 " Go
 NeoBundle 'fatih/vim-go'
 
+" react
+NeoBundle 'mxw/vim-jsx'
+
 call neobundle#end()
 
 " Required:
@@ -158,9 +161,6 @@ let g:neocomplcache_enable_at_startup = 1
 " neo-snippets
 " ========================================
 
-" tabで補完候補の選択を行う
-inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -168,13 +168,19 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets, ~/.snippets'
 " tell neosnippet about the other snippets
 let g:neosnippet#enable_snipmate_compatibility=1
+
+" tabで補完候補の選択を行う
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" neosnippet.vim公式指定をちょっといじる
 " スニペットの補完が出てる時のキー操作(tabで適用/C-nで次へ)
-imap <expr><Enter> neosnippet#expandable_or_jumpable() ?
+imap <expr><CR> neosnippet#expandable() <bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
+imap <expr><TAB> neosnippet#jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<Enter>"
-smap <expr><ENTER> neosnippet#expandable_or_jumpable() ?
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<Enter>"
+\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
