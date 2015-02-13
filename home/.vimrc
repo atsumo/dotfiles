@@ -52,7 +52,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'editorconfig/editorconfig-vim'
 ""NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'bling/vim-airline'
+""NeoBundle 'bling/vim-airline'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 " tagbar
@@ -73,6 +73,7 @@ NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'Yggdroot/indentLine'
 " nerdtree
 ""NeoBundle 'scrooloose/nerdtree.git'
 
@@ -128,6 +129,13 @@ set backspace=indent,eol,start
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
+
+" ========================================
+" lightline
+" ========================================
+set laststatus=2
+
+
 
 " ========================================
 " color scheme
@@ -393,11 +401,7 @@ nnoremap ,sc :<C-u>SyntasticCheck<CR>"
 "autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 " insert
-inoremap <silent> jj <ESC>
-inoremap <silent> <C-j> j
-inoremap <silent> kk <ESC>
-"inoremap <silent> <C-k> k
-
+imap <C-j> <esc>
 
 " multiple-cursors
 let g:multi_cursor_use_default_mapping=0
@@ -407,3 +411,11 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_start_key='<F6>'
+
+""indentLine'
+let g:indentLine_faster = 1
+nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
+
+""react jsx
+let g:jsx_ext_required = 0
+let g:jsx_pragma_required = 1
