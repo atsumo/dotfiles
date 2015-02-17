@@ -87,6 +87,7 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'fatih/vim-go'
 
 " react
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 
 call neobundle#end()
@@ -381,7 +382,7 @@ let g:unite_source_history_yank_enable = 1
 nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
 
 "jshint
-let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_javascript_checkers=['jsxhint']
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_check_on_save=1 "保存時にはチェック
