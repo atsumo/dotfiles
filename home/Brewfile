@@ -39,6 +39,9 @@ install nkf       || true
 install ag        || true
 install peco      || true
 
+##
+install erlang    || true
+
 ## Image
 install imagemagick || true
 

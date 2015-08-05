@@ -90,6 +90,9 @@ NeoBundle 'fatih/vim-go'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 
+" Elixir
+NeoBundle 'elixir-lang/vim-elixir'
+
 call neobundle#end()
 
 " Required:
