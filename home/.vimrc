@@ -157,7 +157,11 @@ colorscheme molokai
 let g:molokai_original = 1
 
 " 連続ペースト
-vnoremap <silent> <c-p> "0p<cr>
+vnoremap <silent> <C-p> "0p<cr>
+
+" LeaderをSpaceに置き換え
+nmap <Space> <Leader>
+let mapleader = "\<Space>"
 
 " highlight
 set hlsearch
@@ -228,57 +232,6 @@ let g:indent_guides_guide_size = 1
 autocmd vimenter,colorscheme * :hi indentguidesodd  guibg=red   ctermbg=3
 autocmd vimenter,colorscheme * :hi indentguideseven guibg=green ctermbg=4
 
-" nerd tree
-"====================
-" START NerdTree 設定
-"====================
-" 引数なしで実行したとき、NERDTreeを実行する
-""let file_name = expand("%:p")
-""if has('vim_starting') &&  file_name == ""
-""    autocmd VimEnter * call ExecuteNERDTree()
-""endif
- 
-" カーソルが外れているときは自動的にnerdtreeを隠す
-""function! ExecuteNERDTree()
-""    "b:nerdstatus = 1 : NERDTree 表示中
-""    "b:nerdstatus = 2 : NERDTree 非表示中
-"" 
-""    if !exists('g:nerdstatus')
-""        execute 'NERDTree ./'
-""        let g:windowWidth = winwidth(winnr())
-""        let g:nerdtreebuf = bufnr('')
-""        let g:nerdstatus = 1 
-"" 
-""    elseif g:nerdstatus == 1 
-""        execute 'wincmd t'
-""        execute 'vertical resize' 0 
-""        execute 'wincmd p'
-""        let g:nerdstatus = 2 
-""    elseif g:nerdstatus == 2 
-""        execute 'wincmd t'
-""        execute 'vertical resize' g:windowWidth
-""        let g:nerdstatus = 1 
-"" 
-""    endif
-""endfunction
-"noremap <c-e> :<c-u>:call ExecuteNERDTree()<cr>
-"====================
-" END NerdTree 設定
-"====================
-
-
-""nmap <silent> <C-e>      :NERDTreeToggle<CR>
-""vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-""omap <silent> <C-e>      :NERDTreeToggle<CR>
-""imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-""cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-""autocmd vimenter * if !argc() | NERDTree | endif
-""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-""let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$']
-""let g:NERDTreeShowHidden=0
-""let g:NERDTreeMinimalUI=1
-""let g:NERDTreeDirArrows=0
-""let g:NERDTreeMouseMode=2
 
 " 編集モード系
 ""set virtualedit=all     " カーソルを文字が存在しない部分でも動けるようにする
