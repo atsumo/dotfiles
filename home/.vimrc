@@ -29,7 +29,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle install packages
 " ========================================
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache'
@@ -77,6 +85,9 @@ NeoBundle 'Yggdroot/indentLine'
 " nerdtree
 ""NeoBundle 'scrooloose/nerdtree.git'
 
+""json
+NeoBundle 'elzr/vim-json'
+
 " snippet
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
@@ -88,7 +99,7 @@ NeoBundle 'fatih/vim-go'
 
 " react
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
+""NeoBundle 'mxw/vim-jsx'
 
 " Elixir
 NeoBundle 'elixir-lang/vim-elixir'
@@ -338,7 +349,7 @@ let g:unite_source_history_yank_enable = 1
 nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
 
 "jshint
-let g:syntastic_javascript_checkers=['jsxhint']
+let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_check_on_save=1 "保存時にはチェック
@@ -374,5 +385,5 @@ let g:indentLine_faster = 1
 nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 
 ""react jsx
-let g:jsx_ext_required = 0
-let g:jsx_pragma_required = 1
+""let g:jsx_ext_required = 0
+""let g:jsx_pragma_required = 1

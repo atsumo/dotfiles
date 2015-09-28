@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -29,7 +29,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew npm homesick)
+plugins=(brew git npm homesick)
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source $ZSH/oh-my-zsh.sh
@@ -38,7 +38,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 source $(brew --prefix nvm)/nvm.sh
 if which nvm >/dev/null 2>&1 ;then
-  _nodejs_use_version="v0.10.40"
+  _nodejs_use_version="v0.12.6"
   if nvm ls | grep -F -e "${_nodejs_use_version}" >/dev/null 2>&1 ;then
     nvm use "${_nodejs_use_version}" >/dev/null
     export NODE_PATH=${NVM_PATH}_modules${NODE_PATH:+:}${NODE_PATH}
