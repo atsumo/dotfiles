@@ -46,7 +46,8 @@ if which nvm >/dev/null 2>&1 ;then
   unset _nodejs_use_version
 fi
 
-export PATH=/usr/local/bin:$PATH
+#/usr/local/binを優先
+export PATH=/usr/local/bin:/usr/bin:$PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 export EDITOR=vim
