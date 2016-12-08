@@ -35,16 +35,26 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source $ZSH/oh-my-zsh.sh
 #source ~/.bin/tmuxinator.zsh
 
+#terraform
+export PATH=$HOME/.terraform-0.7.4:$PATH
+
 # Customize to your needs...
-source $(brew --prefix nvm)/nvm.sh
-if which nvm >/dev/null 2>&1 ;then
-  _nodejs_use_version="v0.12.6"
-  if nvm ls | grep -F -e "${_nodejs_use_version}" >/dev/null 2>&1 ;then
-    nvm use "${_nodejs_use_version}" >/dev/null
-    export NODE_PATH=${NVM_PATH}_modules${NODE_PATH:+:}${NODE_PATH}
-  fi
-  unset _nodejs_use_version
-fi
+#source $(brew --prefix nvm)/nvm.sh
+#nvm use --delete-prefix "v4.4.2"
+#if which nvm >/dev/null 2>&1 ;then
+#  _nodejs_use_version="v0.12.8"
+#  if nvm ls | grep -F -e "${_nodejs_use_version}" >/dev/null 2>&1 ;then
+#    nvm use "${_nodejs_use_version}" >/dev/null
+#    export NODE_PATH=${NVM_PATH}_modules${NODE_PATH:+:}${NODE_PATH}
+#  fi
+#  unset _nodejs_use_version
+#fi
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+nodebrew use v6.9.1
+
+# direnv
+# TODO: brew install direnv
+eval "$(direnv hook zsh)"
 
 #/usr/local/binを優先
 export PATH=/usr/local/bin:/usr/bin:$PATH
@@ -59,7 +69,7 @@ function agvim () {
 
 #GOPATH
 if [ -z "${GOPATH:-}" ]; then
-  export GOPATH=$HOME
+  export GOPATH=$HOME/go
   export GOROOT=/usr/local/opt/go/libexec
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
@@ -74,4 +84,7 @@ function peco-src () {
   zle clear-screen
 }
 zle -N peco-src
+#ctrl+]で呼び出し
 bindkey '^]' peco-src
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
