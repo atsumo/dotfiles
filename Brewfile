@@ -40,7 +40,7 @@ install ag        || true
 install peco      || true
 
 ##
-install erlang    || true
+#install erlang    || true
 
 ## Image
 install imagemagick || true
@@ -51,20 +51,18 @@ cask install google-chrome || true
 cask install google-japanese-ime || true
 cask install iterm2        || true
 cask install dropbox       || true
-cask install hipchat       || true
-cask install alfred        || true
+#cask install hipchat       || true
+#cask install alfred        || true
 cask install sourcetree    || true
 cask install evernote      || true
 cask install kobito        || true
-cask install sublime-text3  || true
-cask install keepassx      || true
+#cask install sublime-text3  || true
+#cask install keepassx      || true
 cask install virtualbox    || true
 cask install vagrant       || true
 #cask install kitematic      || true
 cask install cyberduck     || true
-cask install adobe-creative-cloud || true
 cask install clipmenu      || true
-cask install totalspaces || true
 
 #quicklook plugin
 cask install qlcolorcode  || true
@@ -78,6 +76,6 @@ cask install webp-quicklook || true
 cask install suspicious-package || true
 cask install macdown  || true
 # link
-cask alfred link # brew-caskのappをalfredで探せるようにする
+#cask alfred link # brew-caskのappをalfredで探せるようにする
 # Remove outdated versions
 cleanup

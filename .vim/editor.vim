@@ -41,3 +41,6 @@ set t_co=256
 
 " highlight
 set hlsearch
+
+" clipboard
+set clipboard=unnamed
