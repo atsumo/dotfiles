@@ -30,7 +30,14 @@ zplug "b4b4r07/enhancd", use:init.sh
 #zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
-#zstyle ':completion:*:default' menu select=1
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv)
+POWERLEVEL9K_STATUS_VERBOSE=false
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+
+# 選ばれてるモノをハイライト
+zstyle ':completion:*:default' menu select=1
 
 # install
 if ! zplug check --verbose; then
@@ -42,6 +49,10 @@ fi
 export TERM="xterm-256color"
 
 zplug load
+
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
 
 #####################################
 # envs
@@ -85,9 +96,9 @@ function peco-src () {
   fi
   zle clear-screen
 }
-zle -N peco-src
-#ctrl+]で呼び出し
-bindkey '^]' peco-src
+# zle -N peco-src
+# ctrl+]で呼び出し
+# bindkey '^]' peco-src
 
 function peco-ssh-tapple () {
   local host="$( cat ~/peco_tapple/peco_setting/list.tky00_cocotsure | peco )"
@@ -97,8 +108,11 @@ function peco-ssh-tapple () {
   fi
   zle clear-screen
 }
+#zle -N peco-ssh-tapple
+#bindkey '^@' peco-ssh-tapple
 zle -N peco-ssh-tapple
-bindkey '^@' peco-ssh-tapple
+#ctrl+]で呼び出し
+bindkey '^]' peco-ssh-tapple
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
