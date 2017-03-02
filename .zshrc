@@ -28,6 +28,7 @@ zplug "b4b4r07/enhancd", use:init.sh
 # Also prezto themes
 #zplug "mafredri/zsh-async", from:github
 #zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 #zstyle ':completion:*:default' menu select=1
 
@@ -38,6 +39,7 @@ if ! zplug check --verbose; then
     echo; zplug install
   fi
 fi
+export TERM="xterm-256color"
 
 zplug load
 
@@ -87,7 +89,7 @@ zle -N peco-src
 #ctrl+]で呼び出し
 bindkey '^]' peco-src
 
-function peco-ssh-tapple {
+function peco-ssh-tapple () {
   local host="$( cat ~/peco_tapple/peco_setting/list.tky00_cocotsure | peco )"
   if [ ! -z "$host" ] ; then
       BUFFER="ssh `echo $host|awk '{print $1}'`"
@@ -95,8 +97,8 @@ function peco-ssh-tapple {
   fi
   zle clear-screen
 }
-#zle -N peco-ssh-tapple
-bindkey '^[' peco-ssh-tapple
+zle -N peco-ssh-tapple
+bindkey '^@' peco-ssh-tapple
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
