@@ -18,6 +18,7 @@ set shiftwidth=2
 set noexpandtab
 set expandtab
 set autoindent
+set noswapfile
 
 
 set cursorline

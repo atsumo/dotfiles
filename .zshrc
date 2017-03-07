@@ -20,7 +20,7 @@ source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
 # 必要ならばアーキテクチャ指定
 zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
 # # fzf-tmux の peco バージョン
-zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux
+#zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux
 
 #enhancd
 zplug "b4b4r07/enhancd", use:init.sh
@@ -68,10 +68,6 @@ nodebrew use v6.9.1
 # TODO: brew install direnv
 eval "$(direnv hook zsh)"
 
-
-#/usr/local/binを優先
-export PATH=/usr/local/bin:/usr/bin:$PATH
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 export EDITOR=vim
 
@@ -117,3 +113,8 @@ bindkey '^]' peco-ssh-tapple
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# 初回シェル時のみ tmux実行
+if [ $SHLVL = 1 ]; then
+  tmux
+fi
