@@ -15,7 +15,7 @@ zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 
 # powerline
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # 必要ならばアーキテクチャ指定
 zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
@@ -61,8 +61,8 @@ TRAPWINCH() {
 #terraform
 export PATH=$HOME/.terraform-0.7.4:$PATH
 
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-nodebrew use v6.9.1
+#export PATH=$HOME/.nodebrew/current/bin:$PATH
+#nodebrew use v6.9.1
 
 # direnv
 # TODO: brew install direnv

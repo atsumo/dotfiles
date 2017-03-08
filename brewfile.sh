@@ -12,6 +12,7 @@ brew tap peco/peco
 
 # パッケージのインストール
 brew install subversion
+brew install zsh
 
 # editor
 brew install vim
@@ -37,6 +38,9 @@ brew install nkf
 #brew install ag
 brew install peco
 brew install mas
+
+# for tmux etc
+brew install reattach-to-user-namespace
 
 # plugin mamagers
 brew install zplug
