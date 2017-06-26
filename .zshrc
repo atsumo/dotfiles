@@ -96,6 +96,13 @@ function peco-src () {
 # ctrl+]で呼び出し
 # bindkey '^]' peco-src
 
+function repo {
+  local dir="$( ghq list -p | peco )"
+  if [ ! -z "$dir" ] ; then
+    cd "$dir"
+  fi
+}
+
 function peco-ssh-tapple () {
   local host="$( cat ~/peco_tapple/peco_setting/list.tky00_cocotsure | peco )"
   if [ ! -z "$host" ] ; then
@@ -115,6 +122,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # 初回シェル時のみ tmux実行
-if [ $SHLVL = 1 ]; then
-  tmux
+#
+#if [ $SHLVL = 1 ]; then
+#  tmux
+#fi
+
+if [ -f ~/alias ]; then
+    . ~/alias
 fi
