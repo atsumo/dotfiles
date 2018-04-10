@@ -71,6 +71,7 @@ eval "$(direnv hook zsh)"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 export EDITOR=vim
 
+
 # need peco
 function agvim () {
   vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
@@ -130,3 +131,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if [ -f ~/alias ]; then
     . ~/alias
 fi
+
+# android setting
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
+export ANDROID_HOME="${HOME}/Library/Android/sdk"
+export PATH=$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
