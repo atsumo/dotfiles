@@ -1,6 +1,7 @@
 [core]
 	editor = vim
 	excludesfile = /Users/a11673/.gitignore_global
+	autocrlf = input
 [include]
 	path = .gitconfig.local
 [color]
@@ -21,6 +22,8 @@
     diff = diff-highlight | less
 [push]
   default = current
+[fetch]
+  prune = true
 [ghq]
   root = ~/.ghq
   root = ~/src
@@ -28,7 +31,7 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Users/a11673/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
 	template = /Users/a11673/.stCommitMsg

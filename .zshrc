@@ -1,7 +1,8 @@
 #####################################
 # plugins
 #####################################
-source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 # plugin define
 zplug "zplug/zplug"
@@ -79,7 +80,7 @@ function agvim () {
 
 #GOPATH
 if [ -z "${GOPATH:-}" ]; then
-  export GOPATH=$HOME/go
+  export GOPATH=$HOME
   export GOROOT=/usr/local/opt/go/libexec
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
@@ -137,6 +138,15 @@ export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Hom
 export ANDROID_HOME="${HOME}/Library/Android/sdk"
 export PATH=$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# flutter seting https://flutter.io/setup-macos/
+export PATH="$HOME/development/flutter/bin:$PATH"
+
+# fastlane
+export PATH="$HOME/.fastlane/bin:$PATH"

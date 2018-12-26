@@ -17,6 +17,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'powerline/powerline'
   Plug 'scrooloose/syntastic'
   Plug 'Galooshi/vim-import-js'
+  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 " ====================
