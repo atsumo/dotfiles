@@ -1,0 +1,6 @@
+imap jj <Esc>
+set timeoutlen=1000
+set iminsert=2
+set showmode
+" ステータス行を常に表示
+set laststatus=2
