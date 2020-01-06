@@ -80,9 +80,9 @@ function agvim () {
 
 #GOPATH
 if [ -z "${GOPATH:-}" ]; then
-  export GOPATH=$HOME
+  export GOPATH=$HOME/go
   export GOROOT=/usr/local/opt/go/libexec
-  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH/.ghq
 fi
 
 #ghq + peco
@@ -98,7 +98,7 @@ function peco-src () {
 # ctrl+]で呼び出し
 # bindkey '^]' peco-src
 
-function repo {
+function ghq-repo {
   local dir="$( ghq list -p | peco )"
   if [ ! -z "$dir" ] ; then
     cd "$dir"
@@ -134,9 +134,9 @@ if [ -f ~/alias ]; then
 fi
 
 # android setting
-export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
+export JAVA_HOME=/Applications/"Android Studio.app"/Contents/jre/jdk/Contents/Home
 export ANDROID_HOME="${HOME}/Library/Android/sdk"
-export PATH=$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH
+export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
