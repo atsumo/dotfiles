@@ -56,15 +56,15 @@ brew install imagemagick
 # Casks
 brew install brew-cask
 
-brew cask install google-chrome
+# brew cask install google-chrome
 brew cask install google-japanese-ime
 brew cask install iterm2
 brew cask install dropbox
 brew cask install sourcetree
-brew cask install kobito
-brew cask install atom
+# brew cask install kobito
+# brew cask install atom
 brew cask install cyberduck
-brew cask install shiftit
+# brew cask install shiftit
 
 #quicklook plugin
 brew cask install qlcolorcode
