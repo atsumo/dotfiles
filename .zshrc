@@ -153,10 +153,10 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$HOME/.fastlane/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/atsumo/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/atsumo/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/Desktop/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Desktop/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/atsumo/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/atsumo/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/Desktop/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Desktop/google-cloud-sdk/completion.zsh.inc"; fi
 
 # ssl
 export PATH="/usr/local/opt/openssl/bin:$PATH"
