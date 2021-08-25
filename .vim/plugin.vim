@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'ryanoasis/vim-devicons'
   Plug 'wakatime/vim-wakatime'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " ====================

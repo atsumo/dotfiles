@@ -62,8 +62,10 @@ TRAPWINCH() {
 #terraform
 export PATH=$HOME/.terraform-0.7.4:$PATH
 
-#export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+nodebrew use v14.4.0
 #nodebrew use v6.9.1
+NODE_OPTIONS=--max_old_space_size=4096
 
 # direnv
 # TODO: brew install direnv
@@ -80,7 +82,7 @@ function agvim () {
 
 #GOPATH
 if [ -z "${GOPATH:-}" ]; then
-  export GOPATH=$HOME/go
+  export GOPATH=$HOME/.go
   export GOROOT=/usr/local/opt/go/libexec
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH/.ghq
 fi
@@ -145,8 +147,25 @@ export LANG=en_US.UTF-8
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# flutter seting https://flutter.io/setup-macos/
-export PATH="$HOME/development/flutter/bin:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # fastlane
 export PATH="$HOME/.fastlane/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/atsumo/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/atsumo/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/atsumo/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/atsumo/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+# ssl
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# flutter
+export PATH="$PATH":"$HOME/fvm/default/bin"
+#PATH="$PATH:$HOME/.ghq/github.com/flutter/flutter/bin"
+
+# dart
+export PATH="$PATH":"usr/lib/dart/bin"
+
+. /usr/local/opt/asdf/asdf.sh
