@@ -14,6 +14,8 @@ brew tap peco/peco
 brew install subversion
 brew install zsh
 
+brew install direnv
+
 # editor
 brew install vim
 
