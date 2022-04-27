@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/atsumo/.gitignore_global
 	autocrlf = input
 [include]
 	path = .gitconfig.local

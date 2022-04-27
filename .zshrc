@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 #####################################
 # plugins
 #####################################
@@ -136,7 +138,7 @@ if [ -f ~/alias ]; then
 fi
 
 # android setting
-export JAVA_HOME=/Applications/"Android Studio.app"/Contents/jre/jdk/Contents/Home
+export JAVA_HOME="/Applications/Android Studio Beta.app/Contents/jre/Contents/Home"
 export ANDROID_HOME="${HOME}/Library/Android/sdk"
 export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
 
@@ -169,3 +171,6 @@ export PATH="$PATH":"$HOME/fvm/default/bin"
 export PATH="$PATH":"usr/lib/dart/bin"
 
 . /usr/local/opt/asdf/asdf.sh
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
