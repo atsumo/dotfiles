@@ -3,7 +3,7 @@
 #####################################
 # plugins
 #####################################
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 # plugin define
@@ -170,7 +170,7 @@ export PATH="$PATH":"$HOME/fvm/default/bin"
 # dart
 export PATH="$PATH":"usr/lib/dart/bin"
 
-. /usr/local/opt/asdf/asdf.sh
+# /usr/local/opt/asdf/asdf.sh
 
 # Fig post block. Keep at the bottom of this file.
 . "$HOME/.fig/shell/zshrc.post.zsh"
