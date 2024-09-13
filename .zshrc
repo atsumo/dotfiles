@@ -171,6 +171,10 @@ export PATH="$PATH":"$HOME/fvm/default/bin"
 export PATH="$PATH":"usr/lib/dart/bin"
 
 # /usr/local/opt/asdf/asdf.sh
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# sdkman
+source "$HOME/.sdkman/bin/sdkman-init.sh"
