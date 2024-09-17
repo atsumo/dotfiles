@@ -21,9 +21,11 @@ zplug 'zsh-users/zsh-syntax-highlighting'
 # source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # 必要ならばアーキテクチャ指定
-zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
-# # fzf-tmux の peco バージョン
-#zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux
+# fzf
+zplug "junegunn/fzf", \
+  from:gh-r, \
+  as:command, \
+  rename-to:fzfzplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
 
 #enhancd
 zplug "b4b4r07/enhancd", use:init.sh
@@ -83,11 +85,13 @@ function agvim () {
 }
 
 #GOPATH
-if [ -z "${GOPATH:-}" ]; then
-  export GOPATH=$HOME/.go
-  export GOROOT=/usr/local/opt/go/libexec
-  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH/.ghq
-fi
+#if [ -z "${GOPATH:-}" ]; then
+#  export GOPATH=$HOME/.go
+#  export GOROOT=/opt/homebrew/opt/go/libexec
+#  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH/.ghq
+#fi
+export GOROOT=/opt/homebrew/opt/go/libexec
+export PATH=$GOROOT/bin:$PATH
 
 #ghq + peco
 function peco-src () {
@@ -138,9 +142,9 @@ if [ -f ~/alias ]; then
 fi
 
 # android setting
-export JAVA_HOME="/Applications/Android Studio Beta.app/Contents/jre/Contents/Home"
-export ANDROID_HOME="${HOME}/Library/Android/sdk"
-export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
+# export JAVA_HOME="/Applications/Android Studio Beta.app/Contents/jre/Contents/Home"
+# export ANDROID_HOME="${HOME}/Library/Android/sdk"
+# export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -178,3 +182,4 @@ export PATH="$PATH":"usr/lib/dart/bin"
 
 # sdkman
 source "$HOME/.sdkman/bin/sdkman-init.sh"
+
